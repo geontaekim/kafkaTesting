@@ -1,0 +1,50 @@
+
+spring:
+  profiles:
+    group: 
+      "local" : "local-set,common"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "common" 
+server:
+  port: 8099
+
+
+
+---
+
+spring:
+  
+  devtools:
+    livereload:
+      enabled: true
+  config:
+    activate:
+      on-profile: local-set
+          
+  datasource:
+   driver-calss-name: oracle.jdbc.OracleDriver
+   url: jdbc:oracle:thin:@//localhost1523/xe
+   username: logi5
+   password: logi5
+   
+ 
+mybatis:
+  mapper-locations: mybatis/**/*.xml
+  type-aliases-package: com.kafkaTesting.kafka.kafkaTest
+  configuration:
+    map-underscore-to-camel-case: true
+ 
+ 
+logging:
+  level:
+    root: info
+    com:
+      kafkaTesting:
+        kafka: debug  
+      
+
