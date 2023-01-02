@@ -46,7 +46,7 @@ public class KafkaController {
 		  
 		  	
 		  	
-	        return "success!";
+	        return list.toString();
 	    }
 	  
 		

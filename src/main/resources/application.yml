@@ -27,10 +27,22 @@ spring:
       on-profile: local-set
           
   datasource:
-   driver-calss-name: oracle.jdbc.OracleDriver
-   url: jdbc:oracle:thin:@//localhost1523/xe
+   driver-class-name: oracle.jdbc.OracleDriver
+   url: jdbc:oracle:thin:@//localhost:1523/xe
    username: logi5
    password: logi5
+
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group-id-oing
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
    
  
 mybatis:
