@@ -27,6 +27,7 @@ public class KafkaController {
 	@Autowired
 	private KafkaService kafkaService;
 	
+	
 	 @PostMapping("/kafkaList")
 	public String kafka_test(@RequestBody String jsonData) throws Exception{
 		 
