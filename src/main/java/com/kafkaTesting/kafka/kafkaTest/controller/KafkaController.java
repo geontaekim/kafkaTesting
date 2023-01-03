@@ -27,7 +27,7 @@ public class KafkaController {
 	@Autowired
 	private KafkaService kafkaService;
 	
-	 @PostMapping("/kafka")
+	 @PostMapping("/kafkaList")
 	public String kafka_test(@RequestBody String jsonData) throws Exception{
 		 
 		  	log.debug("jsonData:::::"+jsonData);
@@ -48,6 +48,28 @@ public class KafkaController {
 		  	
 	        return list.toString();
 	    }
+	 
+	 @PostMapping("/codeList")
+		public String codeList(@RequestBody String jsonData) throws Exception{
+			 
+			  	log.debug("jsonData:::::"+jsonData);
+			  	JSONObject json =new JSONObject(jsonData);
+			  	log.debug("check::::"+json);
+			  	
+			  	HashMap<String, Object> params = new HashMap<>();
+			  	params.put("type", json.get("type"));
+			  	params.put("code", json.get("code"));
+			  	log.debug("check params:::{}"+params);
+			  	HashMap<String , Object> resultMap = new HashMap<>();
+			  	ArrayList<HashMap<String , Object>> list = new ArrayList();
+			  	list = kafkaService.selectKafkaList(params);
+			  	
+			  	log.debug("result::::"+list);
+			  
+			  	
+			  	
+		        return list.toString();
+		    }
 	  
 		
 	}

@@ -42,17 +42,20 @@ public class KafkaService {
 		
 	} 
 	
-	 @KafkaListener(topics = "guntae", groupId = "group-id-oing")
-	    public void consume(String message) throws IOException {
-		 	log.debug("csadsadsadsadsadsadsad");
-		 	
-		 	
-		 	
-	        log.debug("check:::::"+message);
-	        
-	        
-	        
-	        
-	    }
+	
+	public ArrayList<HashMap<String , Object>> selectKafkaList(HashMap<String,Object> map){
+		log.debug("[selectEmpList][work]");
+		log.debug("[selectEmpList][check map]:::{}"+map);
+		ArrayList<HashMap<String , Object>> result=kafkamapper.selectEmpList();
+		
+		log.debug("[checkResult]"+result);
+		
+		this.kafkaTemplate.send("guntae2",result.toString());
+	
+		
+		return result;
+		
+	} 
+	
 	
 }
