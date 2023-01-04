@@ -1,18 +1,15 @@
 package com.kafkaTesting.kafka.kafkaTest.Service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.KafkaListener;
+
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kafkaTesting.kafka.kafkaTest.mapper.KafkaMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -38,10 +35,7 @@ public class KafkaService {
 		ArrayList<HashMap<String , Object>> result=kafkamapper.selectEmpList();
 
 		log.debug("[checkResult]"+result);
-
-
 		
-		JSONParser parser = new JSONParser();
 		
 		for(HashMap<String , Object> res : result) {
 			
