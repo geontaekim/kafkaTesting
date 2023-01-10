@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/api/kaf")
 public class KafkaController {
 
-	@Autowired
-	private KafkaService kafkaService;
+	private final KafkaService kafkaService;
 	
 	
 	 @PostMapping("/kafkaList")
@@ -34,7 +34,6 @@ public class KafkaController {
 		  	log.debug("jsonData:::::"+jsonData);
 		  	JSONObject json =new JSONObject(jsonData);
 		  	log.debug("check::::"+json);
-		  	
 		  	HashMap<String, Object> params = new HashMap<>();
 		  	params.put("type", json.get("type"));
 		  	params.put("code", json.get("code"));
@@ -45,8 +44,6 @@ public class KafkaController {
 		  	
 		  	log.debug("result::::"+list);
 		  
-		  	
-		  	
 	        return list.toString();
 	    }
 	 
